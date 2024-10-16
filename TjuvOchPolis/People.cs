@@ -21,8 +21,8 @@ namespace TjuvOchPolis
 
     public class Thief : People
     {
-        public List<Loot> Loots { get; set; }
-        public Thief(string name, List<Item> items, List<Loot> loots) : base(name, items)
+        public List<Item> Loots { get; set; }
+        public Thief(string name, List<Item> items, List<Item> loots) : base(name, items)
         {
             Loots = loots;
         }
@@ -30,8 +30,8 @@ namespace TjuvOchPolis
 
     public class Police : People
     {
-        public List<Evidence> Evidences { get; set; }
-        public Police(string name, List<Item> items, List<Evidence> evidences) : base(name, items)
+        public List<Item> Evidences { get; set; }
+        public Police(string name, List<Item> items, List<Item> evidences) : base(name, items)
         {
             Evidences = evidences;
         }
@@ -39,8 +39,8 @@ namespace TjuvOchPolis
 
     public class Citizen : People
     {
-        public List<Valuable> Valuables { get; set; }
-        public Citizen(string name, List<Item> items, List<Valuable> valuables) : base(name, items)
+        public List<Item> Valuables { get; set; }
+        public Citizen(string name, List<Item> items, List<Item> valuables) : base(name, items)
         {
             Valuables = valuables;
         }
