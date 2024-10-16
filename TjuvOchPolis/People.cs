@@ -7,10 +7,13 @@ using System.Threading.Tasks;
 
 namespace TjuvOchPolis
 {
+    // The base class for all people
     public class People
     {
         public string Name { get; set; }
         public List<Item> Items { get; set; }
+        public int Row { get; set; }
+        public int Col { get; set; }
 
         public People(string name, List<Item>items)
         {
@@ -18,7 +21,8 @@ namespace TjuvOchPolis
             Items = items;
         }
     }
-
+    
+    // The thief
     public class Thief : People
     {
         public List<Item> Loots { get; set; }
@@ -28,6 +32,7 @@ namespace TjuvOchPolis
         }
     }
 
+    // The police
     public class Police : People
     {
         public List<Item> Evidences { get; set; }
@@ -37,6 +42,7 @@ namespace TjuvOchPolis
         }
     }
 
+    // The citizen
     public class Citizen : People
     {
         public List<Item> Valuables { get; set; }
