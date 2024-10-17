@@ -22,7 +22,7 @@ namespace TjuvOchPolis
             {
                 DisplayGrid();
                 MovePerson();
-                System.Threading.Thread.Sleep(500);
+                Thread.Sleep(500);
                 Console.Clear(); 
             }
         }
@@ -32,19 +32,19 @@ namespace TjuvOchPolis
         {
             for (int i = 0; i < 7; i++)
             {
-                Police police = new Police($"Police{i}", new List<Item>(), new List<Item>());
+                Police police = new Police($"Police{i}", new List<Item>());
                 PutPerson(police, 7);
             }
 
             for (int i = 0; i < 15; i++)
             {
-                Thief thief = new Thief($"Thief{i}", new List<Item>(), new List<Item>());
+                Thief thief = new Thief($"Thief{i}", new List<Item>());
                 PutPerson(thief, 15);
             }
 
             for (int i = 0; i < 30; i++)
             {
-                Citizen citizen = new Citizen($"Citizen{i}", new List<Item>(), new List<Item>());
+                Citizen citizen = new Citizen($"Citizen{i}", new List<Item>());
                 PutPerson(citizen, 30);
             }
         }
@@ -79,24 +79,75 @@ namespace TjuvOchPolis
         {
             cityGrid[person.Row, person.Col] = 0;
 
-            int direction = random.Next(4);
-            switch (direction)
+            switch (person.Direction)
             {
-                case 0: if (person.Row > 0) person.Row--; break; // Move up
-                case 1: if (person.Row < cityGrid.GetLength(0) - 1) person.Row++; break; // Move down
-                case 2: if (person.Col > 0) person.Col--; break; // Move left
-                case 3: if (person.Col < cityGrid.GetLength(1) - 1) person.Col++; break; // Move right
+                case 0: if (person.Row > 0)
+                    {
+                        person.Row--;
+                        if (person.Row == 0)
+                        {
+                            person.Row = cityGrid.GetLength(0) - 1;
+                        }
+                    }
+                    break;
+                case 1: if (person.Row < cityGrid.GetLength(0) - 1)
+                    {
+                        person.Row++;
+                        if (person.Row == cityGrid.GetLength(0) - 1)
+                        {
+                            person.Row = 0;
+                        }
+                    }
+                            break;
+                case 2: if (person.Col > 0)
+                    {
+                        person.Col--;
+                        if (person.Col == 0)
+                        {
+                            person.Col = cityGrid.GetLength(1) - 1;
+                        }
+                    }
+                        break;
+                case 3: if (person.Col < cityGrid.GetLength(1) - 1)
+                    {
+                        person.Col++;
+                        if (person.Col == cityGrid.GetLength(1) - 1)
+                        {
+                            person.Col = 0;
+                        }
+                    }
+                        break;
                 case 4: if (person.Row > 0 && person.Col > 0)
                     {
                         person.Col--;
                         person.Row--;
-                    }
-                    break;
+                        {
+                            if (person.Row == 0)
+                            {
+                                person.Row = cityGrid.GetLength(0) - 1;
+                            }
+                            if (person.Col == 0)
+                            {
+                                person.Col = cityGrid.GetLength(1) - 1;
+                            }
+                        }
+                        }
+                        break;
                 case 5:
                     if (person.Row < cityGrid.GetLength(0) - 1 && person.Col > 0)
                     {
                         person.Col--;
                         person.Row++;
+                        {
+                            if (person.Row == cityGrid.GetLength(0) - 1)
+                            {
+                                person.Row = 0;
+                            }
+                            if (person.Col == 0)
+                            {
+                                person.Col = cityGrid.GetLength(1) - 1;
+                            }
+                        }
                     }
                     break;
             }
@@ -115,12 +166,28 @@ namespace TjuvOchPolis
                 {
                     switch (cityGrid[row, col])
                     {
-                        case 0: Console.Write(". "); break; // The part of the city
-                        case 1: Console.Write("P "); break; // Police
-                        case 2: Console.Write("T "); break; // Thief
-                        case 3: Console.Write("C "); break; // Citizen
-                        default: Console.Write("? "); break;
+                        case 0:
+                            Console.ForegroundColor = ConsoleColor.Green; 
+                            Console.Write(". "); 
+                            break; // The part of the city
+                        case 1:
+                            Console.ForegroundColor = ConsoleColor.DarkBlue; 
+                            Console.Write("P ");
+                            break; // Police
+                        case 2:
+                            Console.ForegroundColor = ConsoleColor.Red; 
+                            Console.Write("T "); 
+                            break; // Thief
+                        case 3:
+                            Console.ForegroundColor = ConsoleColor.Magenta; 
+                            Console.Write("C "); 
+                            break; // Citizen
+                        default:
+                            Console.ForegroundColor = ConsoleColor.White; 
+                            Console.Write("? "); 
+                            break;
                     }
+                    Console.ResetColor();
                 }
                 Console.WriteLine();
             }
