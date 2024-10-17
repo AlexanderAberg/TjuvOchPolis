@@ -11,14 +11,14 @@ namespace TjuvOchPolis
     public class People
     {
         public string Name { get; set; }
-        public List<Item> Items { get; set; }
         public int Row { get; set; }
         public int Col { get; set; }
+        public int Direction { get; set; }
 
-        public People(string name, List<Item>items)
+        public People(string name)
         {
             Name = name;
-            Items = items;
+            Direction = Random.Shared.Next(0,6);
         }
     }
     
@@ -26,7 +26,7 @@ namespace TjuvOchPolis
     public class Thief : People
     {
         public List<Item> Loots { get; set; }
-        public Thief(string name, List<Item> items, List<Item> loots) : base(name, items)
+        public Thief(string name, List<Item> loots) : base(name)
         {
             Loots = loots;
         }
@@ -35,10 +35,10 @@ namespace TjuvOchPolis
     // The police
     public class Police : People
     {
-        public List<Item> Evidences { get; set; }
-        public Police(string name, List<Item> items, List<Item> evidences) : base(name, items)
+        public List<Item> Confiscated { get; set; }
+        public Police(string name, List<Item> confiscated) : base(name)
         {
-            Evidences = evidences;
+            Confiscated = confiscated;
         }
     }
 
@@ -46,7 +46,7 @@ namespace TjuvOchPolis
     public class Citizen : People
     {
         public List<Item> Valuables { get; set; }
-        public Citizen(string name, List<Item> items, List<Item> valuables) : base(name, items)
+        public Citizen(string name, List<Item> valuables) : base(name)
         {
             Valuables = valuables;
         }
