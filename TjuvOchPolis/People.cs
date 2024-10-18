@@ -30,10 +30,8 @@ namespace TjuvOchPolis
         {
             Loots = loots;
         }
-        public override string ToString()
-        {
-            return "Thief";
-        }
+        public override string ToString() => $"Thief {Name}";
+ 
     }
 
     // The police
@@ -44,10 +42,7 @@ namespace TjuvOchPolis
         {
             Confiscated = confiscated;
         }
-        public override string ToString()
-        {
-            return "Police";
-        }
+        public override string ToString() => $"Police {Name}";
     }
 
     // The citizen
@@ -58,9 +53,6 @@ namespace TjuvOchPolis
         {
             Valuables = valuables;
         }
-        public override string ToString()
-        {
-            return "Citizen";
-        }
+        public override string ToString() => $"Citizen {Name}";
     }
 }
