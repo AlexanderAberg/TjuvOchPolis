@@ -30,6 +30,10 @@ namespace TjuvOchPolis
         {
             Loots = loots;
         }
+        public override string ToString()
+        {
+            return "Thief";
+        }
     }
 
     // The police
@@ -40,6 +44,10 @@ namespace TjuvOchPolis
         {
             Confiscated = confiscated;
         }
+        public override string ToString()
+        {
+            return "Police";
+        }
     }
 
     // The citizen
@@ -49,6 +57,10 @@ namespace TjuvOchPolis
         public Citizen(string name, List<Item> valuables) : base(name)
         {
             Valuables = valuables;
+        }
+        public override string ToString()
+        {
+            return "Citizen";
         }
     }
 }

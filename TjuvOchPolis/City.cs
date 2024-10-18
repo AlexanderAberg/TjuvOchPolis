@@ -11,6 +11,7 @@ namespace TjuvOchPolis
         public static int[,] cityGrid;
         public static List<People> people;
         public static Random random = new Random();
+        public static Interaction interaction = new Interaction();
 
         public static void CityGrid()
         {
@@ -22,6 +23,7 @@ namespace TjuvOchPolis
             {
                 DisplayGrid();
                 MovePerson();
+                interaction.InteractionBetweenPeople();
                 Thread.Sleep(500);
                 Console.Clear(); 
             }
@@ -45,6 +47,9 @@ namespace TjuvOchPolis
             for (int i = 0; i < 30; i++)
             {
                 Citizen citizen = new Citizen($"Citizen{i}", new List<Item>());
+                {
+                    new Item("Wallet", "Keys", "Mobile", "Watch");
+                }
                 PutPerson(citizen, 30);
             }
         }
