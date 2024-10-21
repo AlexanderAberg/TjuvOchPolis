@@ -47,14 +47,12 @@ namespace TjuvOchPolis
         {
             int crimes = 0;
 
-            while (citizen.Valuables.Count > 0 && crimes < 4)
-            {
-                crimes++;
-                List<Item> stolenLoot = new List<Item>();
-            }
 
             if (citizen.Valuables.Count > 0)
             {
+                crimes++;
+                //List<Item> stolenLoot = new List<Item>();
+
                 int randomIndex = City.random.Next(citizen.Valuables.Count);
                 Item stolenLoot = citizen.Valuables[randomIndex];
                 citizen.Valuables.RemoveAt(randomIndex);
@@ -71,7 +69,7 @@ namespace TjuvOchPolis
             }
             else
             {
-                Console.WriteLine($"{thief} tries to steal from {citizen}, but {citizen} has nothing to steal.");
+                Console.WriteLine($"{thief} tries to steal from {citizen}, but {citizen} has nothing of value.");
                 Console.ReadLine();
                 Console.Clear();
                 Thread.Sleep(500);
@@ -80,6 +78,12 @@ namespace TjuvOchPolis
 
         public void ThiefPolice(Thief thief, Police police)
         {
+            int crimes = 0;
+            while (thief.Loots.Count > 0 && crimes < 4)
+            {
+                crimes++;
+                List<Item> confiscatedItem = new List<Item>();
+            }
             if (thief.Loots.Count > 0)
             {
                 Item confiscatedItem = thief.Loots[0];

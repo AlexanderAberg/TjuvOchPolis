@@ -46,10 +46,7 @@ namespace TjuvOchPolis
 
             for (int i = 0; i < 30; i++)
             {
-                Citizen citizen = new Citizen($"Citizen{i}", new List<Item>
-                {
-                    new Item("Wallet", "Keys", "Mobile", "Watch")
-                });
+                Citizen citizen = new Citizen($"Citizen{i}", new List<Item>());
                 PutPerson(citizen, 30);
             }
         }

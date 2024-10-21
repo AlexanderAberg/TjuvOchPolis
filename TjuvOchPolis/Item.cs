@@ -8,17 +8,11 @@ namespace TjuvOchPolis
 {
     public class Item
     {
-        public string Wallet { get; set; }
-        public string Keys { get; set; }
-        public string Mobile { get; set; }
-        public string Watch { get; set; }
+        public string Name { get; set; }
 
-        public Item(string wallet, string keys, string mobile, string watch)
+        public Item(string name)
         {
-            Wallet = wallet;
-            Keys = keys;
-            Mobile = mobile;
-            Watch = watch;
+            Name = name;
         }
     }
 }

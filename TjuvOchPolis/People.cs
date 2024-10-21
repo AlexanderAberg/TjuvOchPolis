@@ -51,7 +51,13 @@ namespace TjuvOchPolis
         public List<Item> Valuables { get; set; }
         public Citizen(string name, List<Item> valuables) : base(name)
         {
-            Valuables = valuables;
+            Valuables = new List<Item>
+            {
+                new Item("Wallet"),
+                new Item("Keys"),
+                new Item("Mobile"),
+                new Item("Watch")
+            };
         }
         public override string ToString() => $"Citizen {Name}";
     }
