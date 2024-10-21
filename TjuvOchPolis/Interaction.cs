@@ -11,6 +11,8 @@ namespace TjuvOchPolis
 {
     public class Interaction
     {
+        public static int Crimes { get; set; } = 0;
+        public static int CrimesSolved { get; set; } = 0;
         public void InteractionBetweenPeople()
         {
             for (int i = 0; i < City.people.Count; i++)
@@ -45,12 +47,12 @@ namespace TjuvOchPolis
                  
         public void ThiefCitizen(Thief thief, Citizen citizen)
         {
-            int crimes = 0;
+            int Crimes = 0;
 
 
             if (citizen.Valuables.Count > 0)
             {
-                crimes++;
+                Interaction.Crimes++;
 
                 int randomIndex = City.random.Next(citizen.Valuables.Count);
                 Item stolenLoot = citizen.Valuables[randomIndex];
@@ -77,8 +79,11 @@ namespace TjuvOchPolis
 
         public void ThiefPolice(Thief thief, Police police)
         {
+            int CimesSolved = 0;
             if (thief.Loots.Count > 0 )
             {
+                Interaction.CrimesSolved++;
+
                 Console.WriteLine($"{police} arrests {thief}");
                 Console.WriteLine($"The {police} confiscated these valuables from the {thief}");
                 foreach (Item confiscatedItem in thief.Loots)

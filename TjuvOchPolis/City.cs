@@ -25,29 +25,29 @@ namespace TjuvOchPolis
                 MovePerson();
                 interaction.InteractionBetweenPeople();
                 Thread.Sleep(500);
-                Console.Clear(); 
+                Console.Clear();
             }
         }
 
         // Create people in the city
         public static void CreatePerson()
         {
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < 11; i++)
             {
                 Police police = new Police($"Police{i}", new List<Item>());
-                PutPerson(police, 7);
+                PutPerson(police, 11);
             }
 
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < 20; i++)
             {
                 Thief thief = new Thief($"Thief{i}", new List<Item>());
-                PutPerson(thief, 15);
+                PutPerson(thief, 20);
             }
 
-            for (int i = 0; i < 30; i++)
+            for (int i = 0; i < 48; i++)
             {
                 Citizen citizen = new Citizen($"Citizen{i}", new List<Item>());
-                PutPerson(citizen, 30);
+                PutPerson(citizen, 48);
             }
         }
 
@@ -162,6 +162,9 @@ namespace TjuvOchPolis
 
         public static void DisplayGrid()
         {
+            // Display the number of crimes and the number of crimes solved
+            Console.WriteLine($"Crimes: {Interaction.Crimes} | Crimes Solved: {Interaction.CrimesSolved}");
+            Console.WriteLine(new string('-', cityGrid.GetLength(1) * 2));
             for (int row = 0; row < cityGrid.GetLength(0); row++)
             {
                 for (int col = 0; col < cityGrid.GetLength(1); col++)
