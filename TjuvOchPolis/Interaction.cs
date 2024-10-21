@@ -51,7 +51,6 @@ namespace TjuvOchPolis
             if (citizen.Valuables.Count > 0)
             {
                 crimes++;
-                //List<Item> stolenLoot = new List<Item>();
 
                 int randomIndex = City.random.Next(citizen.Valuables.Count);
                 Item stolenLoot = citizen.Valuables[randomIndex];
@@ -78,22 +77,28 @@ namespace TjuvOchPolis
 
         public void ThiefPolice(Thief thief, Police police)
         {
-            int crimes = 0;
-            while (thief.Loots.Count > 0 && crimes < 4)
+            if (thief.Loots.Count > 0 )
             {
-                crimes++;
-                List<Item> confiscatedItem = new List<Item>();
-            }
-            if (thief.Loots.Count > 0)
-            {
-                Item confiscatedItem = thief.Loots[0];
-                thief.Loots.RemoveAt(0);
-                police.Confiscated.Add(confiscatedItem);
                 Console.WriteLine($"{police} arrests {thief}");
-                Console.WriteLine($"The {police} confiscated {confiscatedItem.GetType()} from the {thief}");
+                Console.WriteLine($"The {police} confiscated these valuables from the {thief}");
+                foreach (Item confiscatedItem in thief.Loots)
+                {
+                    police.Confiscated.Add(confiscatedItem);
+                    Console.WriteLine($"{confiscatedItem.GetType().Name}: {confiscatedItem.Name}");
+                }
+                thief.Loots.Clear();
+                Console.WriteLine();
                 Console.ReadLine();
                 Thread.Sleep(500);
                 Console.Clear();
+            }
+            else
+            {
+                Console.WriteLine($"{police} investigates {thief}");
+                Console.WriteLine($"{thief} has done nothing wrong, so {police} is letting the {thief} continue with its day");
+                Console.ReadLine();
+                Console.Clear();
+                Thread.Sleep(500);
             }
         }
 
