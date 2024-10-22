@@ -15,7 +15,7 @@ namespace TjuvOchPolis
 
         public static void CityGrid()
         {
-            cityGrid = new int[33, 70];
+            cityGrid = new int[33, 80];
             people = new List<People>();
             CreatePerson();
 
@@ -32,7 +32,7 @@ namespace TjuvOchPolis
         // Create people in the city
         public static void CreatePerson()
         {
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < 12; i++)
             {
                 Police police = new Police($"Police{i}", new List<Item>());
                 PutPerson(police, 11);
