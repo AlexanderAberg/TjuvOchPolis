@@ -17,7 +17,7 @@ namespace TjuvOchPolis
 
         public People(string name)
         {
-            Name = name;
+            Name = Names.GetRandomName();
             Direction = Random.Shared.Next(0,6);
         }
     }
