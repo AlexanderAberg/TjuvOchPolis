@@ -162,9 +162,6 @@ namespace TjuvOchPolis
 
         public static void DisplayGrid()
         {
-            // Display the number of crimes and the number of crimes solved
-            Console.WriteLine($"Crimes: {Interaction.Crimes} | Crimes Solved: {Interaction.CrimesSolved}");
-            Console.WriteLine(new string('-', cityGrid.GetLength(1) * 2));
             for (int row = 0; row < cityGrid.GetLength(0); row++)
             {
                 for (int col = 0; col < cityGrid.GetLength(1); col++)
@@ -196,6 +193,9 @@ namespace TjuvOchPolis
                 }
                 Console.WriteLine();
             }
+            // Display the number of crimes and the number of crimes solved
+            Console.WriteLine($"Crimes: {Interaction.Crimes} | Crimes Solved: {Interaction.CrimesSolved}");
+            Console.WriteLine(new string('-', cityGrid.GetLength(1) * 2));
         }
     }
 }
