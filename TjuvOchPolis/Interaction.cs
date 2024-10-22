@@ -64,14 +64,12 @@ namespace TjuvOchPolis
                     Console.WriteLine($"{property.Name}: {property.GetValue(stolenLoot)}");
                 }
                 Console.WriteLine();
-                Console.ReadLine();
                 Console.Clear();
                 Thread.Sleep(500);
             }
             else
             {
                 Console.WriteLine($"{thief} tries to steal from {citizen}, but {citizen} has nothing of value.");
-                Console.ReadLine();
                 Console.Clear();
                 Thread.Sleep(500);
             }
@@ -93,7 +91,6 @@ namespace TjuvOchPolis
                 }
                 thief.Loots.Clear();
                 Console.WriteLine();
-                Console.ReadLine();
                 Thread.Sleep(500);
                 Console.Clear();
             }
@@ -101,9 +98,8 @@ namespace TjuvOchPolis
             {
                 Console.WriteLine($"{police} investigates {thief}");
                 Console.WriteLine($"{thief} has done nothing wrong, so {police} is letting the {thief} continue with its day");
-                Console.ReadLine();
-                Console.Clear();
                 Thread.Sleep(500);
+                Console.Clear();
             }
         }
 
@@ -112,9 +108,8 @@ namespace TjuvOchPolis
             Console.WriteLine("{Citizen} and {police} greet each other");
             Console.WriteLine($"{citizen}: Hello! {police} Nice day isn't it?");
             Console.WriteLine($"{police}: Yes it is, have a nice day and stay safe {citizen}");
-            Console.ReadLine();
-            Console.Clear();
             Thread.Sleep(500);
+            Console.Clear();
         }
     }
 }
