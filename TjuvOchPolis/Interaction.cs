@@ -77,7 +77,7 @@ namespace TjuvOchPolis
 
         public void ThiefPolice(Thief thief, Police police)
         {
-            int CimesSolved = 0;
+            int CrimesSolved = 0;
             if (thief.Loots.Count > 0 )
             {
                 Interaction.CrimesSolved++;
@@ -90,6 +90,15 @@ namespace TjuvOchPolis
                     Console.WriteLine($"{confiscatedItem.GetType().Name}: {confiscatedItem.Name}");
                 }
                 thief.Loots.Clear();
+                if (City.prison.AddToPrison(thief))
+                {
+                    City.cityGrid[thief.Row, thief.Col] = 0;
+                    City.people.Remove(thief);
+                }
+                else
+                {
+                    Console.WriteLine($"Failed to imprison {thief.Name}");
+                }
                 Console.WriteLine();
                 Thread.Sleep(1500);
                 Console.Clear();
@@ -105,7 +114,7 @@ namespace TjuvOchPolis
 
         public void CitizenPolice(Citizen citizen, Police police)
         {
-            Console.WriteLine("{Citizen} and {police} greet each other");
+            Console.WriteLine($"{citizen} and {police} greet each other");
             Console.WriteLine($"{citizen}: Hello! {police} Nice day isn't it?");
             Console.WriteLine($"{police}: Yes it is, have a nice day and stay safe {citizen}");
             Thread.Sleep(1500);
