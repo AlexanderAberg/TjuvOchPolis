@@ -64,14 +64,14 @@ namespace TjuvOchPolis
                     Console.WriteLine($"{property.Name}: {property.GetValue(stolenLoot)}");
                 }
                 Console.WriteLine();
-                Thread.Sleep(1500);
-                Console.SetCursorPosition(0, 0);
+                Thread.Sleep(1200);
+                Console.SetCursorPosition(0, 48);
             }
             else
             {
                 Console.WriteLine($"{thief} tries to steal from {citizen}, but {citizen} has nothing of value.");
-                Thread.Sleep(1500);
-                Console.SetCursorPosition(0, 0);
+                Thread.Sleep(1200);
+                Console.SetCursorPosition(0, 48);
             }
         }
 
@@ -96,15 +96,15 @@ namespace TjuvOchPolis
                     City.people.Remove(thief);
                 }
                 Console.WriteLine();
-                Thread.Sleep(1500);
-                Console.SetCursorPosition(0, 0);
+                Thread.Sleep(1200);
+                Console.SetCursorPosition(0, 48);
             }
             else
             {
                 Console.WriteLine($"{police} investigates {thief}");
                 Console.WriteLine($"{thief} has done nothing wrong, so {police} is letting the {thief} continue with its day");
-                Thread.Sleep(1500);
-                Console.SetCursorPosition(0, 0);
+                Thread.Sleep(1200);
+                Console.SetCursorPosition(0, 48);
             }
         }
 
@@ -113,8 +113,8 @@ namespace TjuvOchPolis
             Console.WriteLine($"{citizen} and {police} greet each other");
             Console.WriteLine($"{citizen}: Hello! {police} Nice day isn't it?");
             Console.WriteLine($"{police}: Yes it is, have a nice day and stay safe {citizen}");
-            Thread.Sleep(1500);
-            Console.SetCursorPosition(0, 0);
+            Thread.Sleep(1200);
+            Console.SetCursorPosition(0, 48);
         }
     }
 }

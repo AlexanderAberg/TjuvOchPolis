@@ -35,10 +35,10 @@ namespace TjuvOchPolis
         // Create people in the city
         public static void CreatePerson()
         {
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < 12; i++)
             {
                 Police police = new Police($"Police{i}", new List<Item>());
-                PutPerson(police, 11);
+                PutPerson(police, 12);
             }
 
             for (int i = 0; i < 20; i++)
@@ -75,12 +75,12 @@ namespace TjuvOchPolis
         {
             foreach (var person in people)
             {
-                MovePerson(person);
+                MovePerson(person, prison);
             }
         }
 
         // Movement directions for people
-        public static void MovePerson(People person)
+        public static void MovePerson(People person, Prison prison)
         {
             cityGrid[person.Row, person.Col] = 0;
 
