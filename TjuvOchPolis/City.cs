@@ -165,13 +165,6 @@ namespace TjuvOchPolis
             cityGrid[person.Row, person.Col] = person is Thief ? 2 : (person is Police ? 1 : 3);
         }
 
-        // Get the prison
-        public static Prison GetPrison()
-        {
-            return prison;
-        }
-
-
         public static void DisplayGrid()
         {
             // Display the city
@@ -212,7 +205,6 @@ namespace TjuvOchPolis
             {
                 for (int col = 0; col < prison.PrisonGrid.GetLength(1); col++)
                 {
-                    while (prison.PrisonGrid[row, col] != 0) ;
                     switch (prison.PrisonGrid[row, col])
                     {
                         case 0:
@@ -220,7 +212,7 @@ namespace TjuvOchPolis
                             Console.Write("* ");
                             break; // The part of the prison
                         case 1:
-                            Console.ForegroundColor = ConsoleColor.Yellow;
+                            Console.ForegroundColor = ConsoleColor.DarkYellow;
                             Console.Write("F ");
                             break; // Prisoner   
                     }

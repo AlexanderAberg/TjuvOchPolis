@@ -20,10 +20,9 @@ namespace TjuvOchPolis
 
         public bool AddToPrison(Thief thief)
         {
-            if (PutInPrison(thief))
+             if (PutInPrison(thief))
             {
             Prisoners.Add(thief);
-            PutInPrison(thief);
             Console.WriteLine($"{thief.Name} has been imprisoned");
             }
             return false;
@@ -33,7 +32,7 @@ namespace TjuvOchPolis
         {
             int maxAttempts = PrisonGrid.GetLength(0) * PrisonGrid.GetLength(1);
             int attempts = 0;
-
+            // To make sure that thief will be denied prison slot if there is more thieves than size of prison
             while (attempts < maxAttempts)
             {
                 int row = City.random.Next(PrisonGrid.GetLength(0));
