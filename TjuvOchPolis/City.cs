@@ -25,6 +25,7 @@ namespace TjuvOchPolis
             {
                 DisplayGrid();
                 MovePerson();
+                prison.MovePrisoner();
                 interaction.InteractionBetweenPeople();
                 Thread.Sleep(500);
                 Console.Clear();
@@ -77,10 +78,12 @@ namespace TjuvOchPolis
             {
                 MovePerson(person, prison);
             }
+            prison.MovePrisoner();
         }
 
-        // Movement directions for people
-        public static void MovePerson(People person, Prison prison)
+        
+            // Movement directions for people
+            public static void MovePerson(People person, Prison prison)
         {
             cityGrid[person.Row, person.Col] = 0;
 
@@ -165,7 +168,7 @@ namespace TjuvOchPolis
             cityGrid[person.Row, person.Col] = person is Thief ? 2 : (person is Police ? 1 : 3);
         }
 
-        public static void DisplayGrid()
+            public static void DisplayGrid()
         {
             // Display the city
             for (int row = 0; row < cityGrid.GetLength(0); row++)

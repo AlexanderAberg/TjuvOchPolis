@@ -20,10 +20,10 @@ namespace TjuvOchPolis
 
         public bool AddToPrison(Thief thief)
         {
-             if (PutInPrison(thief))
+            if (PutInPrison(thief))
             {
-            Prisoners.Add(thief);
-            Console.WriteLine($"{thief.Name} has been imprisoned");
+                Prisoners.Add(thief);
+                Console.WriteLine($"{thief.Name} has been imprisoned");
             }
             return true;
         }
@@ -50,6 +50,103 @@ namespace TjuvOchPolis
             }
             Console.WriteLine("Prison is full. Cannot add more thieves.");
             return false;
+        }
+
+
+
+        public void MovePrisoner()
+        {
+            foreach (Thief prisoner in Prisoners)
+            {
+                MovePrisoner(prisoner, this);
+            }
+        }
+
+
+        // Movement direction for prisoner
+        public void MovePrisoner(Thief prisoner, Prison prison)
+        {
+            prison.PrisonGrid[prisoner.Row, prisoner.Col] = 0;
+
+            switch (prisoner.Direction)
+            {
+                case 0:
+                    if (prisoner.Row > 0)
+                    {
+                        prisoner.Row--;
+                        if (prisoner.Row == 0)
+                        {
+                            prisoner.Row = prison.PrisonGrid.GetLength(0) - 1;
+                        }
+                    }
+                    break;
+                case 1:
+                    if (prisoner.Row < prison.PrisonGrid.GetLength(0) - 1)
+                    {
+                        prisoner.Row++;
+                        if (prisoner.Row == prison.PrisonGrid.GetLength(0) - 1)
+                        {
+                            prisoner.Row = 0;
+                        }
+                    }
+                    break;
+                case 2:
+                    if (prisoner.Col > 0)
+                    {
+                        prisoner.Col--;
+                        if (prisoner.Col == 0)
+                        {
+                            prisoner.Col = prison.PrisonGrid.GetLength(1) - 1;
+                        }
+                    }
+                    break;
+                case 3:
+                    if (prisoner.Col < prison.PrisonGrid.GetLength(1) - 1)
+                    {
+                        prisoner.Col++;
+                        if (prisoner.Col == prison.PrisonGrid.GetLength(1) - 1)
+                        {
+                            prisoner.Col = 0;
+                        }
+                    }
+                    break;
+                case 4:
+                    if (prisoner.Row > 0 && prisoner.Col > 0)
+                    {
+                        prisoner.Col--;
+                        prisoner.Row--;
+                        {
+                            if (prisoner.Row == 0)
+                            {
+                                prisoner.Row = prison.PrisonGrid.GetLength(0) - 1;
+                            }
+                            if (prisoner.Col == 0)
+                            {
+                                prisoner.Col = prison.PrisonGrid.GetLength(1) - 1;
+                            }
+                        }
+                    }
+                    break;
+                case 5:
+                    if (prisoner.Row < prison.PrisonGrid.GetLength(0) - 1 && prisoner.Col > 0)
+                    {
+                        prisoner.Col--;
+                        prisoner.Row++;
+                        {
+                            if (prisoner.Row == prison.PrisonGrid.GetLength(0) - 1)
+                            {
+                                prisoner.Row = 0;
+                            }
+                            if (prisoner.Col == prison.PrisonGrid.GetLength(1) - 1)
+                            {
+                                prisoner.Col = 0;
+                            }
+                        }
+                    }
+                    break;
+            }
+
+            PrisonGrid[prisoner.Row, prisoner.Col] = 1;
         }
     }
 }
