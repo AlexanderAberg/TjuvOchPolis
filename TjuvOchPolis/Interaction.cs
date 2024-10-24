@@ -11,8 +11,11 @@ namespace TjuvOchPolis
 {
     public class Interaction
     {
+
+        // Calculation of crimes and solved crimes
         public static int Crimes { get; set; } = 0;
         public static int CrimesSolved { get; set; } = 0;
+        // Interaction between people
         public void InteractionBetweenPeople()
         {
             for (int i = 0; i < City.people.Count; i++)
@@ -27,6 +30,8 @@ namespace TjuvOchPolis
             }
         }
 
+
+        // Make sure interaction is handled correctly
         public void HandleInteraction(People person1, People person2)
         {
             if (person1 is Thief thief && person2 is Citizen citizen)
@@ -44,7 +49,7 @@ namespace TjuvOchPolis
         }
 
 
-                 
+        // The violent interaction between the thief and the citizen        
         public void ThiefCitizen(Thief thief, Citizen citizen)
         {
             int Crimes = 0;
@@ -75,6 +80,8 @@ namespace TjuvOchPolis
             }
         }
 
+
+        // The hostile interaction between the thief and the police
         public void ThiefPolice(Thief thief, Police police)
         {
             int CrimesSolved = 0;
@@ -108,6 +115,7 @@ namespace TjuvOchPolis
             }
         }
 
+        // The friendly interaction between the citizen and the police
         public void CitizenPolice(Citizen citizen, Police police)
         {
             Console.WriteLine($"{citizen} and {police} greet each other");
