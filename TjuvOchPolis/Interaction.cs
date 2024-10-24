@@ -102,6 +102,10 @@ namespace TjuvOchPolis
                     City.cityGrid[thief.Row, thief.Col] = 0;
                     City.people.Remove(thief);
                 }
+                else
+                {
+                    Console.WriteLine($"Failed to imprison {thief.Name}");
+                }
                 Console.WriteLine();
                 Thread.Sleep(1200);
                 Console.SetCursorPosition(0, 48);

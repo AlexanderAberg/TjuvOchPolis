@@ -24,8 +24,9 @@ namespace TjuvOchPolis
             {
                 Prisoners.Add(thief);
                 Console.WriteLine($"{thief.Name} has been imprisoned");
+                return true;
             }
-            return true;
+            return false;
         }
 
         public bool PutInPrison(Thief thief)
